@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Btn(props) {
   return (
@@ -11,12 +12,18 @@ function Btn(props) {
         borderRadius: "10px",
         padding: "10px 20px",
         margin: "0 5px",
+        fontSize: props.fontSize,
       }}
     >
       {props.text}
     </button>
   );
 }
+
+Btn.propTypes = {
+  text: PropTypes.string,
+  fontSize: PropTypes.number,
+};
 
 const MemorizedBtn = React.memo(Btn);
 
@@ -25,8 +32,13 @@ function App() {
   const changeValue = () => setValue("저장되었습니다");
   return (
     <div>
-      <MemorizedBtn text={value} big={true} changeValue={changeValue} />
-      <MemorizedBtn text="확인" big={false} />
+      <MemorizedBtn
+        text={value}
+        big={true}
+        changeValue={changeValue}
+        fontSize={16}
+      />
+      <MemorizedBtn text={14} big={false} fontSize="글자크기" />
     </div>
   );
 }
