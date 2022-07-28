@@ -1,20 +1,23 @@
 import React from "react";
 
 function App() {
-  const [minutes, setMinutes] = React.useState(0);
+  const [amount, setAmount] = React.useState(0);
   const [flipped, setFlipped] = React.useState(false);
   const onChange = (event) => {
-    setMinutes(event.target.value);
+    setAmount(event.target.value);
   };
-  const reset = () => setMinutes(0);
-  const onFlip = () => setFlipped((current) => !current);
+  const reset = () => setAmount(0);
+  const onFlip = () => {
+    reset();
+    setFlipped((current) => !current);
+  };
   return (
     <div>
       <h1>Time Converter</h1>
       <div>
         <label htmlFor="minutes">Minutes</label>
         <input
-          value={minutes}
+          value={flipped ? amount * 60 : amount}
           id="minutes"
           placeholder="Minutes"
           type="number"
@@ -25,10 +28,11 @@ function App() {
       <div>
         <label htmlFor="hours">hours</label>
         <input
-          value={Math.round(minutes / 60)}
+          value={flipped ? amount : Math.round(amount / 60)}
           id="hours"
           placeholder="Hours"
           type="number"
+          onChange={onChange}
           disabled={flipped === false}
         />
       </div>
