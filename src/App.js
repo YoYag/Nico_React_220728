@@ -21,7 +21,7 @@ function Btn(props) {
 }
 
 Btn.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
   fontSize: PropTypes.number,
 };
 
@@ -36,9 +36,9 @@ function App() {
         text={value}
         big={true}
         changeValue={changeValue}
-        fontSize={16}
+        fontSize={14}
       />
-      <MemorizedBtn text={14} big={false} fontSize="글자크기" />
+      <MemorizedBtn text="확인" big={false} fontSize={16} />
     </div>
   );
 }
