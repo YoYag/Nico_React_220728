@@ -1,21 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Btn(props) {
+function Btn({ text, tomato, changeValue, fontSize = 14 }) {
   return (
     <button
-      onClick={props.changeValue}
+      onClick={changeValue}
       style={{
-        backgroundColor: props.big ? "tomato" : "green",
+        backgroundColor: tomato ? "tomato" : "green",
         color: "white",
         border: "0",
         borderRadius: "10px",
         padding: "10px 20px",
         margin: "0 5px",
-        fontSize: props.fontSize,
+        fontSize: fontSize,
       }}
     >
-      {props.text}
+      {text}
     </button>
   );
 }
@@ -34,11 +34,11 @@ function App() {
     <div>
       <MemorizedBtn
         text={value}
-        big={true}
+        tomato={true}
         changeValue={changeValue}
-        fontSize={14}
+        fontSize={16}
       />
-      <MemorizedBtn text="확인" big={false} fontSize={16} />
+      <MemorizedBtn text="확인" tomato={false} />
     </div>
   );
 }
