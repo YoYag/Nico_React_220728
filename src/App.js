@@ -2,10 +2,12 @@ import React from "react";
 
 function App() {
   const [minutes, setMinutes] = React.useState(0);
+  const [flipped, setFlipped] = React.useState(false);
   const onChange = (event) => {
     setMinutes(event.target.value);
   };
   const reset = () => setMinutes(0);
+  const onFlip = () => setFlipped((current) => !current);
   return (
     <div>
       <h1>Time Converter</h1>
@@ -17,6 +19,7 @@ function App() {
           placeholder="Minutes"
           type="number"
           onChange={onChange}
+          disabled={flipped === true}
         />
       </div>
       <div>
@@ -26,10 +29,11 @@ function App() {
           id="hours"
           placeholder="Hours"
           type="number"
-          disabled
+          disabled={flipped === false}
         />
       </div>
-      <button onClick={reset}>reset</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={onFlip}>Flip</button>
     </div>
   );
 }
