@@ -37,7 +37,9 @@ function App() {
         />
       </div>
       <button onClick={reset}>Reset</button>
-      <button onClick={onFlip}>Flip</button>
+      <button onClick={onFlip}>
+        {flipped ? "Hours => Minutes" : "Minutes => Hours"}
+      </button>
     </div>
   );
 }
