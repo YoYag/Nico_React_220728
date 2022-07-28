@@ -3,6 +3,7 @@ import React from "react";
 function Btn(props) {
   return (
     <button
+      onClick={props.changeValue}
       style={{
         backgroundColor: props.big ? "tomato" : "green",
         color: "white",
@@ -17,11 +18,15 @@ function Btn(props) {
   );
 }
 
+const MemorizedBtn = React.memo(Btn);
+
 function App() {
+  const [value, setValue] = React.useState("저장");
+  const changeValue = () => setValue("저장되었습니다");
   return (
     <div>
-      <Btn text="저장" big={true} />
-      <Btn text="확인" big={false} />
+      <MemorizedBtn text={value} big={true} changeValue={changeValue} />
+      <MemorizedBtn text="확인" big={false} />
     </div>
   );
 }
